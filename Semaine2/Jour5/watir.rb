@@ -12,11 +12,17 @@ search_bar.send_keys(:enter)
 
 browser.driver.manage.timeouts.implicit_wait = 10
 
-search_result_divs = browser.divs(class:"rc")
-search_result_divs.each do |div|
+search_result_divs_pn = browser.as(class: "pn")
+search_result_divs_rc = browser.divs(class:"rc")
+
+#binding.pry
+
+search_result_divs_rc.each do |div|
   p div.h3.text
+#binding.pry
+
 end
 
-
+binding.pry
 p "Méfait accompli, fermeture du browser"
 browser.close
