@@ -1,8 +1,10 @@
 require 'watir'
 require 'pry'
 
+for i in (1..10)
 browser = Watir::Browser.new()
-browser.goto 'google.com'
+url = "https://www.google.fr/search?q=5+rythmes&start=#{i}0"
+browser.goto url
 search_bar = browser.text_field(class: 'gsfi')
 search_bar.set("Hello World!")
 
@@ -23,6 +25,7 @@ search_result_divs_rc.each do |div|
 
 end
 
-binding.pry
+#binding.pry
 p "Méfait accompli, fermeture du browser"
 browser.close
+end

@@ -48,7 +48,6 @@ begin
   get_the_email_of_a_townhall_from_its_webpage(url)
 
   puts "visite de :",url
-  $pages_visitees = $pages_visitees << url
 
   page = Nokogiri::HTML(open(url))
 
