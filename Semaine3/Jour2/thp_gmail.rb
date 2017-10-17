@@ -8,7 +8,7 @@ require 'mail'
 
 def send_email_to_line(ville,email,gmail)
 
-  titre = "Nouveau à #{ville} : formation gratuite de programmation web 13"
+  titre = "Nouveau à #{ville} : formation gratuite de programmation web"
   msg_txt = "Message plain text"
   msg_html = "<em> Bonjour, <br> <br> <p> Je m'appelle Danny, je suis élève à une formation de code gratuite,
                 ouverte à tous, sans restriction géographique, ni restriction de niveau.
