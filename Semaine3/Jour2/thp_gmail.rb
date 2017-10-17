@@ -8,19 +8,17 @@ require 'mail'
 
 def send_email_to_line(ville,email,gmail)
 
-  titre = "Nouveau à #{ville} : formation gratuite de programmation web 7"
+  titre = "Nouveau à #{ville} : formation gratuite de programmation web 13"
   msg_txt = "Message plain text"
   msg_html = "<em> Bonjour, <br> <br> <p> Je m'appelle Danny, je suis élève à une formation de code gratuite,
                 ouverte à tous, sans restriction géographique, ni restriction de niveau.
                 La formation s'appelle The Hacking Project (http://thehackingproject.org/). </p>
-
                 <p>
                 Nous apprenons l'informatique via la méthode du peer-learning : nous faisons
                 des projets concrets qui nous sont assignés tous les jours, sur lesquel nous
                 planchons en petites équipes autonomes. Le projet du jour est d'envoyer des
                 emails à nos élus locaux pour qu'ils nous aident à faire de The Hacking Project
                 un nouveau format d'éducation gratuite. </p>
-
                 <p>
                 Nous vous contactons pour vous parler du projet, et vous dire que vous pouvez
                 ouvrir une cellule à #{ville}, où vous pouvez former gratuitement 6 personnes
@@ -73,6 +71,19 @@ p gmail.inbox.count
 
 # binding.pry
 
-send_email_to_line("Nogent","tao.zen.duy@gmail.com",gmail)
+
+
+for i in 3..ws.rows.size
+
+  ville = ws[i,1]
+  email = ws[i,2]
+  send_email_to_line(ville,email,gmail)
+
+end
+
+
+
+
+send_email_to_line("DangCity","tao.zen.duy@gmail.com",gmail)
 
 gmail.logout
