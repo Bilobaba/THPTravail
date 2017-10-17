@@ -4,7 +4,7 @@ require 'open-uri'
 require 'pry'
 
 $pages_visitees = []
-$list_emails = {}
+$list__mairies_emails = {}
 $nb_mails = 0
 
 
@@ -41,12 +41,15 @@ begin
 #  binding.pry
       email = value.text
       mairie = url
-      mairie = mairie[37..(mairie.size-6)].capitalize!
+      mairie = url[35..(mairie.size-6)].capitalize!
 
       $nb_mails += 1
       find_email = true
 
       result_email = { mairie => email }
+      $list__mairies_emails[mairie] = email
+
+
       puts "Mairie :",mairie," email :",email
       puts "Nombre d email :", $nb_mails
     end
@@ -61,6 +64,7 @@ end
 end
 
 def get_all_the_urls_townhalls(url)
+
 
 begin
 
@@ -92,7 +96,7 @@ puts "Ici 112",url
 
 # binding.pry
 
-return array_mairie_email
+return $list__mairies_emails
 
 rescue
   puts " Url n a pas pu etre ouvert :",url
@@ -101,7 +105,7 @@ end
 
 # puts page.class   # => Nokogiri::HTML::Document
 
-get_all_the_urls_townhalls(url_dept)
+# get_all_the_urls_townhalls(url_dept)
 
 #binding.pry
 
