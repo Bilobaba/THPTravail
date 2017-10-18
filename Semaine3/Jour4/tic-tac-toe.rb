@@ -23,7 +23,7 @@ class BoardCase
   end
 
   def draw
-    case @choice
+    case @player
     when 1
       return "X"
     when 2
@@ -106,6 +106,11 @@ class Board
     return win
 
   end
+
+  def convert_num_to_i_j(num_case)
+    return num_case/3,num_case%3
+  end
+
 end
 
 
@@ -130,12 +135,31 @@ class Game
 
   def playing
     player_turn = 1
-    loop do
-      system 'clear'
-      @board.draw_cases_played
-      @board.draw_cases_number
+    game_ended = false
+
+    until game_ended
+
+      choice_valided = false
+
+      until choice_valided
+
+        system 'clear'
+        puts " Cases déjà jouées :"
+        @board.draw_cases_played
+        puts ""
+        puts " #{@player[player_turn].name}, choisissez une case :"
+        @board.draw_cases_number
+        puts " Quelle case choisissez-vous ? "
+        num_case = gets.chomp.to_i
+
+        (i,j) = @board.convert_num_to_i_j(num_case)
+        puts i
+        puts j
+
+      end
+
+
 binding.pry
-      puts "Ici 1"
     end
   end
 end
