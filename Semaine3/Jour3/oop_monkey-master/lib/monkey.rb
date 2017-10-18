@@ -8,7 +8,7 @@ class Monkey
   end
 
   def eat(food)
-    @foods_eaten << food unless ["a","e","y","u","i","o"].include? food[0]
+    @foods_eaten << food unless food.start_with?("a","e","y","u","i","o")
   end
 
   def introduce
