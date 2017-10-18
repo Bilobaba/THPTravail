@@ -49,7 +49,7 @@ begin
       result_email = { mairie => email }
       $list__mairies_emails[mairie] = email
 
-
+binding.pry
       puts "Mairie :",mairie," email :",email
       puts "Nombre d email :", $nb_mails
     end
