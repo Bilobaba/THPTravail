@@ -35,17 +35,6 @@ class BoardCase
 
 end
 
-class Player
-
-  attr_accessor :name, :num_id
-
-  def initialize(name,num_player)
-    @name = name
-    @num_id = num_player
-  end
-
-end
-
 class Board
 
   attr_accessor  :b_c # Board Cases
@@ -104,6 +93,18 @@ class Board
     win = win || ((@b_c[0][2].player == @b_c[1][1].player) == (@b_c[2][0].player == player))
 
     return win
+  end
+
+  def end_game
+
+    full_board = true
+    for i in 0..2
+      for j in 0..2
+        full_board = full_board && b_c[i][j].choiced
+      end
+    end
+
+    end_game = (player_win?(1) || player_win?(2)) || full_board
 
   end
 
@@ -111,6 +112,41 @@ class Board
     return num_case/3,num_case%3
   end
 
+end
+
+
+class Player
+
+  attr_accessor :name, :num_id
+
+  def initialize(name,num_player)
+    @name = name
+    @num_id = num_player
+  end
+
+  def play(board)
+
+    choice_valided = false
+
+    until choice_valided
+      system 'clear'
+      puts " Cases déjà jouées :"
+      board.draw_cases_played
+      puts ""
+      puts " #{@name}, choisissez une case :"
+      board.draw_cases_number
+      puts " Quelle case choisissez-vous ? "
+      num_case = gets.chomp.to_i
+
+      (i,j) = board.convert_num_to_i_j(num_case)
+      puts i
+      puts j
+
+      choice_valided = board.b_c[i,j].set_choice(@num_id)
+    end
+
+    return board
+  end
 end
 
 
@@ -139,29 +175,18 @@ class Game
 
     until game_ended
 
-      choice_valided = false
+      @board = @player[player_turn].play(@board)
 
-      until choice_valided
-
-        system 'clear'
-        puts " Cases déjà jouées :"
-        @board.draw_cases_played
-        puts ""
-        puts " #{@player[player_turn].name}, choisissez une case :"
-        @board.draw_cases_number
-        puts " Quelle case choisissez-vous ? "
-        num_case = gets.chomp.to_i
-
-        (i,j) = @board.convert_num_to_i_j(num_case)
-        puts i
-        puts j
-
+      game_ended = @board.end_game
+      if game_ended
+        puts "Bravo #{@player[player_turn].name}, vous avez gagné !" if @board.player_win?(player_turn)
+      else
+        puts "Vous avez tous les deux bien joué, personne n a gagné."
       end
 
-
-binding.pry
+      player_turn = (player_turn + 1) % 2 + 1
     end
-  end
+
 end
 
 game = Game.new
