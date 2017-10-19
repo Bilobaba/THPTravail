@@ -1,6 +1,7 @@
 require 'pry'
 
 Draw_sym = ["X","O","-"]
+$msg_error = ""
 
 class BoardCase
   attr_reader :row, :col
@@ -19,7 +20,7 @@ class BoardCase
       @choiced = true
       return true
     else
-      puts "Case déjà choisie ! "
+      $msg_error =  "Case déjà choisie !"
       return false
     end
   end
@@ -27,11 +28,11 @@ class BoardCase
   def draw
     case @player
     when 1
-      return "X"
+      return Draw_sym[0]
     when 2
-      return "O"
+      return Draw_sym[1]
     else
-      return "-"
+      return Draw_sym[2]
     end
   end
 
@@ -142,7 +143,7 @@ class Player
   attr_accessor :name, :num_id
 
   def initialize(name,num_player)
-    @name = name
+    @name = name.upcase
     @num_id = num_player
   end
 
@@ -154,20 +155,26 @@ class Player
 
     until choice_valided
       system 'clear'
-      puts " Cases déjà jouées :"
+      puts "Grille en cours"
       board.draw_cases_played
       puts ""
       puts " #{@name}, choisissez une case #{Draw_sym[@num_id-1]}:"
 #binding.pry
       board.draw_cases_number
       puts " Quelle case choisissez-vous ? "
+      puts " ***** #{$msg_error} ***** " if $msg_error!= ""
+
+      $msg_error = ""
       num_case = gets.chomp.to_i
 
-      (i,j) = board.convert_num_to_i_j(num_case)
-      puts i
-      puts j
-      choice_valided = board.b_c[i][j].set_choice(@num_id)
-
+      if (0<= num_case) && (num_case <= 8)
+        (i,j) = board.convert_num_to_i_j(num_case)
+        puts i
+        puts j
+        choice_valided = board.b_c[i][j].set_choice(@num_id)
+      else
+        $msg_error = "Il faut saisir un nombre entre 0 et 9 s il vous plait"
+      end
 #binding.pry
     end
 
