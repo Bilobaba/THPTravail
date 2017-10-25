@@ -1,0 +1,14 @@
+<h1> Créer un potin </h1>
+
+<%= form_for @gossip do |g| %>
+
+  <%= g.label :Auteur_anonyme %>:
+  <%= g.text_field :anonymous_author, placeholder: "Anonymous" %><br />
+
+  <%= g.label :Blabla %>:
+  <%= g.text_field :content, placeholder: "Ils sont ensemble ..." %><br />
+
+  <%= g.label :Créer %>:
+  <%= g.submit "Créer un potin" %>
+
+<% end %>

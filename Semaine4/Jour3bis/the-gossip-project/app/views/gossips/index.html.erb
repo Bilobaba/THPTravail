@@ -1,0 +1,15 @@
+<h1> Liste des potins </h1>
+
+<p>
+
+<% @gossips.each do |g| %>
+
+<p> <%= g.anonymous_author %> a dit que <%= g.content %>
+<%= link_to "Modifier" , edit_gossip_path(g) %>
+<%= link_to "Détruire", gossip_path(g), method: :delete %>
+
+</p>
+
+<% end %>
+
+</p>
