@@ -1,0 +1,42 @@
+<h1>Users#new iii </h1>
+<p>Find me in app/views/users/new.html.erb</p>
+
+Le Token <%= form_authenticity_token %>
+
+<form action="/users/create" method="post">
+  Uname: <input type="text" name="user[name]" value="yyy"><br>
+  Email: <input type="text" name="user[email]"><br>
+  Bio: <input type="text" name="user[bio]"><br>
+  <input type="submit" value="Submit">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</form>
+
+
+<h2> Form_tag </h2>
+
+    <%= form_tag( users_create_path ) do  %>
+
+      <%= label_tag :username1 %>
+      <%= text_field_tag "user[name]" %>
+
+
+      <%= label_tag :email1 %>
+      <%= text_field_tag "user[email]" %>
+
+
+      <%= label_tag :bio1 %>
+      <%= text_field_tag "user[bio]" %>
+
+      <%= submit_tag "Sign in", class: "btn btn-large btn-primary" %>
+      <%= submit_tag "Sign in", class: "" %>
+    <% end %>
+
+
+<h2> Form_for  </h2>
+
+<%= form_for :user do |f| %>
+  First name: <%= f.text_field :name %><br />
+  Last name : <%= f.text_field :email %><br />
+  Biography : <%= f.text_area :bio %><br />
+  <%= f.submit %>
+<% end %>

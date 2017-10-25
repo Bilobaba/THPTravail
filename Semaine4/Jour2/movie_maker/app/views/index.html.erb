@@ -1,0 +1,16 @@
+<h1>Liste de mes super films Yes !!!  </h1>
+
+<table>
+  <tr>
+    <th>Titre</th>
+    <th>Année de sortie</th>
+  </tr>
+
+  <% @movies.each do |movie| %>
+    <tr>
+      <td><%= movie.title %></td>
+      <td><%= movie.release_year %></td>
+    </tr>
+  <% end %>
+</table>
+

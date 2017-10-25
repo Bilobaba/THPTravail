@@ -5,33 +5,36 @@ require 'pry'
 
 # http://localhost:4567/
 
-$number_x = rand (100)
+class Guess
+  attr_accessor :number_hided, :style
+  def check_guess(guess)
+
+    if guess == @number_hided
+      message = "<em class =\"style-win\"> Bravo ! Vous avez trouvé <em>"
+      return message
+    elsif guess < @number_hided
+      message = "<em class ='style-low'> Trop petit, nouvelle chance : <em>"
+      return message
+    else
+      message = "<em class ='style-high'> Trop grand, réessayez :  <em>"
+      return message
+    end
+  end
+end
+
+guess_obj = Guess.new
+guess_obj.number_hided = rand (100)
 
 get '/' do
 #  erb :index, :locals => {:number => $number_x}
 #  throw params.inspect
   guess = params["guessy"]
 #  binding.pry
-  (message,style) = check_guess(guess.to_i)
+  message = guess_obj.check_guess(guess.to_i)
 #  binding.pry
-  erb :index, :locals => {:number => $number_x, :message => message, :style => style}
+  erb :index, :locals => {:message => message, :number => guess_obj.number_hided}
 end
 
 
-def check_guess(guess)
-  if guess == $number_x
-    style =  " <style> body { background: red;} </style> "
-    message = " $number_x : #{$number_x} " + "Bravo ! vous avez trouvé"
-    return message,style
-  elsif guess < $number_x
-    style =  " <style> body { background: blue;} </style> "
-    message = " $number_x : #{$number_x} " + "Trop petit, réessayez"
-    return message,style
-  else
-    style =  " <style> body { background: green;} </style> "
-    message = " $number_x : #{$number_x} " + "Trop grand, rééssayez"
-    return message,style
-  end
-end
 
 
