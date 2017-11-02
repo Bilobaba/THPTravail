@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102102825) do
+ActiveRecord::Schema.define(version: 20171102135049) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "date"
@@ -22,6 +22,30 @@ ActiveRecord::Schema.define(version: 20171102102825) do
     t.index ["patient_id"], name: "index_appointments_on_patient_id"
   end
 
+  create_table "assemblies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "assemblies_and_parts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "assemblies_parts", id: false, force: :cascade do |t|
+    t.integer "assembly_id", null: false
+    t.integer "part_id", null: false
+    t.index ["assembly_id", "part_id"], name: "index_assemblies_parts_on_assembly_id_and_part_id", unique: true
+    t.index ["part_id", "assembly_id"], name: "index_assemblies_parts_on_part_id_and_assembly_id", unique: true
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "doctors", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -31,11 +55,33 @@ ActiveRecord::Schema.define(version: 20171102102825) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "parts", force: :cascade do |t|
+    t.string "part_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "patients", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "pseudo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.index ["category_id"], name: "index_videos_on_category_id"
+    t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
 end

@@ -1,0 +1,2 @@
+class AssembliesAndPart < ApplicationRecord
+end
