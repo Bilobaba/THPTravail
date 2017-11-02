@@ -20,6 +20,7 @@ result_email = nil
 begin
   page = Nokogiri::HTML(open(url))
 
+  binding.pry
   contents = page.css('.Style22')
 
 
@@ -30,7 +31,6 @@ begin
 
   puts "recherche des mails sur :",url
 
-#  binding.pry
 
   contents.each do |value|
 
@@ -73,7 +73,9 @@ begin
 
 puts "Ici 112",url
 
+binding.pry
   puts "visite de :",url
+
 
   array_mairie_email = []
 
@@ -81,7 +83,7 @@ puts "Ici 112",url
 
   contents = page.css('a')
 
-#binding.pry
+binding.pry
 
   if !contents.nil?
 
@@ -105,8 +107,14 @@ end
 
 # puts page.class   # => Nokogiri::HTML::Document
 
-# get_all_the_urls_townhalls(url_dept)
 
-#binding.pry
+puts "Quelle est l url"
+url = gets.chomp
+
+binding.pry
+
+get_the_email_of_a_townhall_from_its_webpage(url)
+
+binding.pry
 
 puts "Fini"

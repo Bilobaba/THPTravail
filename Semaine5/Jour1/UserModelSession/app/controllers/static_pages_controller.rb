@@ -3,7 +3,6 @@ require 'pry'
 class StaticPagesController < ApplicationController
   def home
     p @current_user
-    binding.pry
   end
 
   def reponse
