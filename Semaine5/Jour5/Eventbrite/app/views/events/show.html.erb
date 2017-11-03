@@ -3,5 +3,12 @@
   <%= @event.description %> </br>
   <%= @event.date %> </br>
   <%= @event.place %> </br>
-  <%= @event.creator.id %> </br>
+  <%= @event.creator.name %> </br>
 
+<h3> Inscrits </h3>
+
+<% @event.attendees.each do |u| %>
+
+  <p> <%= u.name %> </p>
+
+<% end %>

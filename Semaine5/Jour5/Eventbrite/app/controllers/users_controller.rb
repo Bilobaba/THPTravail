@@ -26,13 +26,14 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def User.current
+      return User.find(session[:user])
+  end
+
   private
     def params_user
       params_user = params.require(:user).permit(:name)
     end
 
-    def curren_user
-      return session[:user]
-    end
 
 end

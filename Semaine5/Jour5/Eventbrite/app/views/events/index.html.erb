@@ -10,5 +10,10 @@
   <%= e.place %> </br>
   <%= e.creator.id %> </br>
   <%= link_to "show event", event_path(e) %> </br>
+  <% if e.attendees.include?(@user) %>
+    <%= link_to "Desinscrire", unsubscribe_path(e,@user) %>
+  <% else %>
+    <%= link_to "Viens ici", subscribe_path(e,@user) %>
+  <% end %>
   </p>
 <% end %>

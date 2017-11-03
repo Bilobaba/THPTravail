@@ -22,10 +22,22 @@ class EventsController < ApplicationController
   end
 
   def subscribe
+    @event = Event.find(params[:event])
+    @user = User.find(params[:user])
+    @event.attendees << @user
+    redirect_to events_path
+  end
+
+  def unsubscribe
+    @event = Event.find(params[:event])
+    @user = User.find(params[:user])
+    @event.attendees.delete(@user)
+    redirect_to events_path
   end
 
   def index
     @events = Event.all
+    @user = User.find(session[:user])
   end
 
   private
