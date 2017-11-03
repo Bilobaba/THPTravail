@@ -1,0 +1,14 @@
+<h2>Users#show</h2>
+
+<%= @user.name %>
+
+<h3> Event que j'ai créés : </h3>
+<% @user.created_events.each do |e| %>
+<p> <%= "#{e.description} à #{e.place} aura lieu #{e.date}" %> </p>
+<% end %>
+
+<h3> Event où je vais aller </h3>
+<% @user.attended_events.each do |e| %>
+<p> <%= "#{e.description} à #{e.place} aura lieu #{e.date}" %> </p>
+<% end %>
+

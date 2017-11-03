@@ -1,0 +1,9 @@
+<% provide @title = "Créer" %>
+
+<h2>Bienvenu</h2>
+
+<%= form_for @user do |f| %>
+  <%= f.label "Votre nom" %>
+  <%= f.text_field :name, placeholder: " Duy" %>
+  <%= f.submit "Créer" %>
+<% end %>

@@ -33,3 +33,18 @@ ddd = Doctor.third
  s = Specialty.first
  ss = Specialty.second
  sss = Specialty.third
+
+puts "Debut 2 "
+
+uk = User.create(pseudo: "Kevin")
+uj = User.create(pseudo: "Juliette")
+ua = User.create(pseudo: "Alex")
+ud = User.create(pseudo: "Duy")
+
+m1 = PrivateMessage.create(text: "Message 1", sender: uk)
+m2 = PrivateMessage.create(text: "Message 2", sender: uj)
+m3 = PrivateMessage.create(text: "Message 3", sender: ud)
+
+t1 = Tweet.create(text: "Tweet 1", author: uk)
+t2 = Tweet.create(text: "Tweet 2", author: uj)
+t3 = Tweet.create(text: "Tweet 3", author: ud)

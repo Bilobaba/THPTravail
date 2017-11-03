@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102154939) do
+ActiveRecord::Schema.define(version: 20171102165229) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "date"
@@ -69,6 +69,21 @@ ActiveRecord::Schema.define(version: 20171102154939) do
     t.integer "specialty_id", null: false
   end
 
+  create_table "join_follower_followings", force: :cascade do |t|
+    t.string "follower"
+    t.string "following"
+  end
+
+  create_table "join_private_message_recipients", force: :cascade do |t|
+    t.string "private_message"
+    t.string "recipient"
+  end
+
+  create_table "likers_tweets", id: false, force: :cascade do |t|
+    t.integer "liker_id", null: false
+    t.integer "tweet_id", null: false
+  end
+
   create_table "parts", force: :cascade do |t|
     t.string "part_number"
     t.datetime "created_at", null: false
@@ -82,10 +97,31 @@ ActiveRecord::Schema.define(version: 20171102154939) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "private_messages", force: :cascade do |t|
+    t.string "text"
+    t.integer "sender_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sender_id"], name: "index_private_messages_on_sender_id"
+  end
+
   create_table "specialties", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.string "text"
+    t.integer "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_tweets_on_author_id"
+  end
+
+  create_table "tweets_users", id: false, force: :cascade do |t|
+    t.integer "tweet_id", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
