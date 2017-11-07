@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProjectGossips</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <p class="notice"> <%= notice %> </p>
+    <p class="alert"> <%= alert %> </p>
+
+    <%= yield %>
+
+    <%= debug moussaillon_signed_in? %>
+    Rails Env : <%= debug Rails.env %>
+    <%= debug Rails.application.config.action_mailer.default_url_options %>
+    <% if moussaillon_signed_in? %>
+      Connecté
+      <%= link_to 'Se déconnecter', destroy_moussaillon_session_path, method: :delete %>
+      <%= debug current_moussaillon.anonymous_username %>
+    <% else %>
+      Non connecté
+      <%= link_to 'Se connecter', new_moussaillon_session_path %>
+    <% end %>
+  </body>
+</html>
