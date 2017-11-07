@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107105937) do
+ActiveRecord::Schema.define(version: 20171107143228) do
+
+  create_table "gossips", force: :cascade do |t|
+    t.integer "moussaillon_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["moussaillon_id"], name: "index_gossips_on_moussaillon_id"
+  end
 
   create_table "moussaillons", force: :cascade do |t|
     t.string "email", default: "", null: false

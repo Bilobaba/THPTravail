@@ -19,8 +19,9 @@
     Rails Env : <%= debug Rails.env %>
     <%= debug Rails.application.config.action_mailer.default_url_options %>
     <% if moussaillon_signed_in? %>
-      Connecté
+      Connectéxxx <%= current_moussaillon.email %>
       <%= link_to 'Se déconnecter', destroy_moussaillon_session_path, method: :delete %>
+      <%= link_to 'Créer gossip', new_gossip_path %>
       <%= debug current_moussaillon.anonymous_username %>
     <% else %>
       Non connecté
