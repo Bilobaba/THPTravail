@@ -1,0 +1,24 @@
+<h1>Movie#search</h1>
+<p>Find me in app/views/movie/search.html.erb</p>
+
+
+<%= form_tag("/movies", method: "get") do %>
+  <%= label_tag(:search, "Search keys") %>
+  <%= text_field_tag(:search) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+
+<h2> Resultats </h2>
+
+<% if @movies %>
+  <% @movies.each do |m| %>
+    <p>
+      <%= image_tag "#{@configuration.base_url + @configuration.logo_sizes.first + m.poster_path}" %>
+      Title : <%= m.title %> </br>
+      Date : <%= m.release_date %> </br>
+      Moyenne : <%= m.vote_average %> sur  <%= m.vote_count %> votes </br>
+    <p>
+  <% end %>
+<% end %>
+
