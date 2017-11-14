@@ -19,21 +19,49 @@
   <div class="cadre">
     <div class="logos">
       <div>
-        <%= link_to "/" do %>
+        <%= link_to "https://turbotax.intuit.com/" do %>
           <%= image_tag  "logo_turbotax.png", size: "101x23", color: :green %>
         <% end%>
       </div>
       <div>
-        <%= link_to "/" do %>
-          <%= image_tag  "logo_quickbooks.png", size: "126x23", color: :green %>
+        <%= link_to "https://quickbooks.intuit.com/" do %>
+          <%= image_tag  "logo_quickbooks.png", size: "126x23", color: :green  %>
         <% end%>
       </div>
       <div>
-        <%= link_to "/" do %>
+        <%= link_to "https://www.mint.com/" do %>
           <%= image_tag  "logo_mint.png", size: "64x23", color: :green %>
         <% end%>
       </div>
     </div>
+    <div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+    </div>
   </div>
 </div>
 
@@ -42,8 +70,6 @@
     </div>
   </div>
 </div>
-
-coucou
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -70,6 +96,8 @@ coucou
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
+coucou
+
 
 <%= render "devise/shared/links" %>
 
