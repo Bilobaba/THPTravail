@@ -1,0 +1,99 @@
+// Place all the styles related to the Homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  background-color:  rgb(236,237,241)
+}
+.page{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 95%;
+}
+.bandeau{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 30px 10px 30px;
+    height: 60px;
+    width: 100%;
+}
+
+.paquet{
+  display: flex;
+}
+
+.texte{
+  margin: 2px;
+}
+
+.already{
+    font-family: 'AvenirNext',Avenir,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    color: #505050;
+    text-align: right;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: right;
+}
+
+.iforgot{
+    font-family: 'AvenirNext',Avenir,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    color: #0077c5;
+    text-align: right;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: right;
+
+}
+
+.cadre{
+  display: flex;
+  background-color: white;
+  height: 682px;
+  width: 380px;
+  margin: 20px;
+  box-sizing: border-box;
+  margin: auto;
+  overflow: visible;
+  padding: 30px;
+  border: 1px solid #c7c7c7;
+}
+
+
+
+.btn-signin {
+
+    display: flex;
+    justify-content: space-around;
+
+    background: #0077c5;
+    border-radius: 4px;
+    border: 1px solid #4c4c4c;
+    height: 15px;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    font-size: 1.125em;
+    font-weight: normal;
+    font: 13.3333px Arial;
+    align-items: flex-start;
+    text-align: center;
+}
+
+.logo-intuit{
+  width: 118px;
+  height: 35px;
+}
+
+.logos{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  height: 23px;
+}

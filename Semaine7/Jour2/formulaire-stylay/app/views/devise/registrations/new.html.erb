@@ -1,0 +1,80 @@
+<div class="page">
+  <div class="bandeau">
+    <div class="paquet">
+      <div class="texte">
+          <div class="already">Already have an Intuit account?</div>
+          <a class="iforgot" href="#">I forgot my User ID or Password</a>
+      </div>
+      <%= link_to new_user_session_path do%>
+        <div class="btn-signin">
+          <div style="color:white; margin:2px"> <%= image_tag("lock.png", size: "13x16") %> </div>
+          <div style="color:white; margin:2px" > Sign In </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <%= link_to "/" do %> <%= image_tag "logo_intuit_grey.png", class:"logo-intuit" %> <% end %>
+  </div>
+  <div class="cadre">
+    <div class="logos">
+      <div>
+        <%= link_to "/" do %>
+          <%= image_tag  "logo_turbotax.png", size: "101x23", color: :green %>
+        <% end%>
+      </div>
+      <div>
+        <%= link_to "/" do %>
+          <%= image_tag  "logo_quickbooks.png", size: "126x23", color: :green %>
+        <% end%>
+      </div>
+      <div>
+        <%= link_to "/" do %>
+          <%= image_tag  "logo_mint.png", size: "64x23", color: :green %>
+        <% end%>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    </div>
+  </div>
+</div>
+
+coucou
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+
+
+
+<div id="cadre">
+
+</div>
