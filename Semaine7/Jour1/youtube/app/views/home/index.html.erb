@@ -1,0 +1,54 @@
+<h1>Home#index</h1>
+
+ici
+<%= url_for(controller: 'home', action: 'index') %> </br>
+la
+<%= url_for(q: 'marecherche', s: 'autre recherche') %>
+
+<p>Find me in app/views/home/index.html.erb</p>
+ <% content_for :navigation do %>
+   <li><%= link_to 'Home', action: 'home' %></li>
+ <% end %>
+
+ <% content_for :navigation do %>
+   <li><%= link_to 'Index', action: 'index' %></li>
+ <% end %>
+
+
+<% content_for :navigation, flush: true do %>
+  <li><%= link_to 'Home 2', action: 'home' %></li>
+<% end %>
+
+<ul><%= content_for :navigation %></ul>
+
+
+ <% content_for :navigation do %>
+   <li><%= link_to 'Home3', action: 'home' %></li>
+ <% end %>
+
+ <% content_for :navigation do %>
+   <li><%= link_to 'Index3', action: 'index' %></li>
+ <% end %>
+
+<ul><%= content_for :navigation %></ul>
+
+
+<%  content_for(:title, 'Yes') %>
+
+<% content_for(:content) do %>
+  <h2> Content </h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit similique velit rem nihil fuga, fugit dolores accusantium iste perferendis harum fugiat voluptates suscipit, dolorum, alias quae minus quaerat eius minima.
+  </p>
+<% end %>
+<% content_for(:sidebar) do %>
+  <h3> sidebar </h3>
+  <h3> sidebar </h3>
+  <h3> sidebar </h3>
+  <h3> sidebar </h3>
+  <h3> sidebar </h3>
+  <h3> sidebar </h3>
+<h3> sidebar </h3>
+<% end %>
+
+<%= render template: '/layouts/sidebar' %>

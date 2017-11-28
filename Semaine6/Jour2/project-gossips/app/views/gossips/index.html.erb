@@ -2,6 +2,7 @@
 
 <h1>Gossips list</h1>
 
+
 <table>
   <thead>
     <tr>
@@ -17,6 +18,7 @@
         <td><%= gossip.moussaillon.email %></td>
         <td><%= gossip.content %></td>
         <td><%= link_to 'Show', gossip %></td>
+        <td><%= 'test' %></td>
         <td>
           <% if moussaillon_signed_in? && current_moussaillon == gossip.moussaillon %>
             <%= link_to 'Edit', edit_gossip_path(gossip) %>
@@ -26,6 +28,9 @@
           <% if moussaillon_signed_in? && current_moussaillon == gossip.moussaillon %>
             <%= link_to 'Destroy', gossip, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
+        </td>
+        <td>
+          <%= url_for([:edit,gossip]) %>
         </td>
       </tr>
     <% end %>
