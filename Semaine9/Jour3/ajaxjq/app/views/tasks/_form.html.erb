@@ -1,0 +1,6 @@
+<%= form_for @task, remote: true do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Newy Task", new_task_path, id: "new_link", remote: true %>
